@@ -12,6 +12,7 @@ export default function Home() {
         <div id="latest-wrap">
           {/* <!-- Display div: with information about every game (if any) --> */}
           <div className="home-container">
+            
             <div className="game">
               <img src="./images/witcher.png" alt="Elden Ring" />
               <div className="details-overlay">
@@ -20,6 +21,7 @@ export default function Home() {
                 <button className="details-button">Details</button>
               </div>
             </div>
+            
             <div className="game">
               <img src="./images/elden ring.png" alt="Elden Ring" />
               <div className="details-overlay">
