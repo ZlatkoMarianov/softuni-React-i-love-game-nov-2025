@@ -19,9 +19,9 @@ function App() {
       throw new Error('Username is taken!');
     }
 
-    const newUser = { email, password };
-    setRegisterdUsers((state) => [...state, newUser]);
-    setUser(newUser);
+    // const newUser = { email, password };
+    setRegisterdUsers((state) => [...state, { email, password }]);
+    // setUser(newUser);
   };
 
   const loginHandler = (email, password) => {
@@ -43,7 +43,7 @@ function App() {
         <Route path="/games/:gameId/details" element={<Details />} />
         <Route path="/games/create" element={<GameCreate />} />
         <Route path="/login" element={<Login onLogin={loginHandler} />} />
-        <Route path="/register" element={<Register user={user} onRegister={registerHandler} />} />
+        <Route path="/register" element={<Register onRegister={registerHandler} />} />
       </Routes>
 
       <Footer />

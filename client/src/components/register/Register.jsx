@@ -18,11 +18,15 @@ export default function Register({ user, onRegister }) {
       return alert('Password mismatch!');
     }
 
-    //  register user
-    onRegister(email, password);
+    try {
+      //  register user
+      onRegister(email, password);
 
-    //  redirect to home page
-    navigate('/');
+      //  redirect to home page
+      navigate('/');
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   return (
