@@ -1,8 +1,8 @@
 // import { useState } from 'react';
-// import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 export default function Register({ user, onRegister }) {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const registerSubmit = (formData) => {
     const email = formData.get('email');
@@ -18,11 +18,11 @@ export default function Register({ user, onRegister }) {
       return alert('Password mismatch!');
     }
 
-    // TODO register user
-    onRegister(email);
+    //  register user
+    onRegister(email, password);
 
-    // TODO redirect to home page
-    // navigate('/');
+    //  redirect to home page
+    navigate('/');
   };
 
   return (

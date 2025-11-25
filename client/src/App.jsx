@@ -11,13 +11,27 @@ import Login from './components/login/Login.jsx';
 import { useState } from 'react';
 
 function App() {
+  const [registerdUsers, setRegisterdUsers] = useState([]);
   const [user, setUser] = useState(null);
 
-  const registerHandler = (email) => {
-    setUser({
-      email,
-    });
-  }; 
+  const registerHandler = (email, password) => {
+    if (registerdUsers.some((user) => user.email === email)) {
+      throw new Error('Username is taken!');
+    }
+
+    const newUser = { email, password };
+    setRegisterdUsers((state) => [...state, newUser]);
+    setUser(newUser);
+  };
+
+  const loginHandler = (email, password) => {
+    const user = registerdUsers.find((u) => u.email === email && u.password === password);
+    if (!user) {
+      throw new Error('Invalid user!');
+    }
+
+    setUser(user);
+  };
 
   return (
     <>
@@ -28,7 +42,7 @@ function App() {
         <Route path="/games" element={<Catalog />} />
         <Route path="/games/:gameId/details" element={<Details />} />
         <Route path="/games/create" element={<GameCreate />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login onLogin={loginHandler} />} />
         <Route path="/register" element={<Register user={user} onRegister={registerHandler} />} />
       </Routes>
 
