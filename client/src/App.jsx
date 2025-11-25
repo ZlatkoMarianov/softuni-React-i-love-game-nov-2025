@@ -19,9 +19,11 @@ function App() {
       throw new Error('Username is taken!');
     }
 
-    // const newUser = { email, password };
-    setRegisterdUsers((state) => [...state, { email, password }]);
+    const newUser = { email, password };
+    setRegisterdUsers((state) => [...state, newUser]);
     // setUser(newUser);
+
+    setUser(newUser);
   };
 
   const loginHandler = (email, password) => {
