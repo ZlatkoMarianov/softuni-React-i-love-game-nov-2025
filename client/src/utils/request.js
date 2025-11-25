@@ -15,8 +15,9 @@ export default async function request(url, method, data) {
     const response = await fetch(url, options);
 
     if (!response.ok) {
-        throw result;
+        throw new Error(`HTTP error! status: ${response.status}`);
     }
+    
     const result = await response.json();
 
     return result;
