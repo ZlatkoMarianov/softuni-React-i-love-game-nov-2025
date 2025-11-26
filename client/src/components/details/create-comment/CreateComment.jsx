@@ -2,7 +2,7 @@ import { useState } from 'react';
 import request from '../../../utils/request.js';
 import { useParams } from 'react-router';
 
-export default function CreateComment({ user }) {
+export default function CreateComment({ user, onCreate }) {
   const { gameId } = useParams();
   const [comment, setComment] = useState('');
 
@@ -11,11 +11,18 @@ export default function CreateComment({ user }) {
   };
 
   const submitHandler = async () => {
-    await request('/comments', 'POST', {
-      author: user.email,
-      message: comment,
-      gameId,
-    });
+    try {
+      await request('/comments', 'POST', {
+        author: user.email,
+        message: comment,
+        gameId,
+      });
+
+      setComment('');
+      onCreate();
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   return (

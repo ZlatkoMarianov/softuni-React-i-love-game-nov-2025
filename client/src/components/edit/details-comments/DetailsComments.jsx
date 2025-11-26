@@ -2,18 +2,16 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import request from '../../../utils/request.js';
 
-export default function DetailsComments() {
+export default function DetailsComments(refresh) {
   const [comments, setComments] = useState([]);
   const { gameId } = useParams();
+
   useEffect(() => {
     request(`/comments`).then((result) => {
       const gameComment = Object.values(result).filter((comment) => comment.gameId === gameId);
       setComments(gameComment);
     });
-  }, [gameId]);
-
-
-  
+  }, [gameId, refresh]);
 
   return (
     <div className="details-comments">
@@ -22,7 +20,7 @@ export default function DetailsComments() {
         {comments.map((comment) => (
           <li key={comment._id} className="comment">
             <p>
-               {comment.author.email}: {comment.message}
+              {comment.author}: {comment.message}
             </p>
           </li>
         ))}
