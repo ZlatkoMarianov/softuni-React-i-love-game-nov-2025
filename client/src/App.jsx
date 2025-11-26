@@ -48,7 +48,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/games" element={<Catalog />} />
-        <Route path="/games/:gameId/details" element={<Details />} />
+        <Route path="/games/:gameId/details" element={<Details user={user} />} />
         <Route path="/games/create" element={<GameCreate />} />
         <Route path="/games/:gameId/edit" element={<Edit />} />
         <Route path="/login" element={<Login onLogin={loginHandler} />} />
