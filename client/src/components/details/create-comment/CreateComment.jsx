@@ -12,7 +12,7 @@ export default function CreateComment({ user }) {
 
   const submitHandler = async () => {
     await request('/comments', 'POST', {
-      author: user,
+      author: user.email,
       message: comment,
       gameId,
     });

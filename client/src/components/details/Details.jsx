@@ -80,7 +80,7 @@ export default function Details({ user }) {
         <DetailsComments />
       </div>
       {/* <!-- Add Comment ( Only for logged-in users, which is not creators of the current game ) --> */}
-      <CreateComment user={user} />
+      {user && <CreateComment user={user} />}
     </section>
   );
 }
