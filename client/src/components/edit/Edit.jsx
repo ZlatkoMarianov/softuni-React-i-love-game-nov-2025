@@ -25,11 +25,16 @@ export default function Edit() {
   };
 
   useEffect(() => {
+    if (!gameId) return;
+
     request(`http://localhost:3030/jsonstore/games/${gameId}`)
       .then((result) => {
-        setValues(result);
+        if (result) {
+          setValues(result);
+        }
       })
       .catch((err) => {
+        // console.error('Error:', err);
         alert(err.message);
       });
   }, [gameId]);

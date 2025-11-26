@@ -50,7 +50,7 @@ function App() {
         <Route path="/games" element={<Catalog />} />
         <Route path="/games/:gameId/details" element={<Details />} />
         <Route path="/games/create" element={<GameCreate />} />
-        <Route path="/games/:gamiId/edit" element={<Edit />} />
+        <Route path="/games/:gameId/edit" element={<Edit />} />
         <Route path="/login" element={<Login onLogin={loginHandler} />} />
         <Route path="/logout" element={<Logout onLogout={logoutHandler} />} />
         <Route path="/register" element={<Register onRegister={registerHandler} />} />
